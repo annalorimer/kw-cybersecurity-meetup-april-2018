@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+        }
+    </style>
+    <title>Routy McRouterson</title>
+</head>
+<body>
+    <center>
+        <h1>Routy McRouterson</h1>
+        <br><br><br>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><input name="username" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input name="password" type="password"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Login!"></td>
+                </tr>
+            </table>
+        </form>
+        <br><br><br>
+        {% if message %}
+            <p> {{ message }} </p>
+        {% endif %}
+    </center>
+</body>
+</html>
