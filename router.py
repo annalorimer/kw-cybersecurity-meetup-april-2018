@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 
@@ -32,13 +32,22 @@ def login():
     
     if is_authenticated():
         debug("Rendering settings ...")
-        return render_template("/settings.html")
+        return redirect(url_for('settings'))
     else:
         debug("Must authenticate to proceed")
         message = "You need to login to access the router settings"
         return render_template("index.html", message=message)
 
+def update_settings(name, lan):
+    return True
 
-#@app.route('/settings', methods=["GET", "POST"])
-#def settings():
-    
+@app.route('/settings', methods=["GET", "POST"])
+def settings():
+    message = ""
+    if request.method == "POST":
+        data = request.form
+        if update_settings(data["name"], data["lan"]):
+            message = "Settings updated!"
+        else:
+            messge = "Error - settings were not updated :("
+    return render_template("settings.html", message=message)
