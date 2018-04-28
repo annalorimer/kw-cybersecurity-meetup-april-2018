@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
+import subprocess
 
 app = Flask(__name__)
 
@@ -66,7 +67,7 @@ def settings():
 def ping_feature():
     message = ""
     if request.method == "POST":
-        data = request.form
+        data = request.form["address"]
         p = subprocess.Popen('echo ' + data, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         for line in p.stdout.readlines():
             message = message + line

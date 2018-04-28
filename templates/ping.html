@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+        }
+    </style>
+    <title>Routy McRouterson Ping A Device</title>
+</head>
+<body>
+   <br><br><br>
+    <center>
+        <h1>Ping A Device</h1>
+        <br>
+        <form name="settings" method="post">
+            <table>
+                <tr>
+                    <td>Ping an address: </td>
+                    <td><input type="text" name="address" id="address"></td>
+                </tr>
+            </table>
+            <input type="submit" value="Ping!">
+        </form>     
+        <br><br><br>   
+        {% if message %}
+            <p> {{ message }} </p>
+        {% endif %}
+    </center>
+
+</body>
+</html> 
