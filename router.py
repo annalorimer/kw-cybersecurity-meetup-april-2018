@@ -32,12 +32,16 @@ def login():
             authenticate()
     
     if is_authenticated():
-        debug("Rendering settings ...")
-        return redirect(url_for('settings'))
+        debug("Rendering menu..")
+        return redirect(url_for('menu'))
     else:
         debug("Must authenticate to proceed")
         message = "You need to login to access the router settings"
         return render_template("index.html", message=message)
+
+@app.route('/menu')
+def menu():
+    return render_template("menu.html")
 
 def update_settings(name, lan):
     global LAN
@@ -63,7 +67,7 @@ def ping_feature():
     message = ""
     if request.method == "POST":
         data = request.form
-        p = subprocess.Popen('echo ' + data, shell=True, stdout=subprocess.PIPE, stderr.subprocess=STDOUT)
+        p = subprocess.Popen('echo ' + data, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         for line in p.stdout.readlines():
             message = message + line
-    render_template("ping.html", message=message)
+    return render_template("ping.html", message=message)
