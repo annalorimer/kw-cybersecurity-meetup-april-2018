@@ -9,6 +9,7 @@ def debug(msg):
 
 # Global vars
 AUTHENTICATED = False
+LAN = "255.255.255"
 
 def is_authenticated():
     return AUTHENTICATED
@@ -39,6 +40,10 @@ def login():
         return render_template("index.html", message=message)
 
 def update_settings(name, lan):
+    global LAN
+    LAN = lan
+    debug("Updated settings: ")
+    debug("     LAN: " + LAN + " Name: ")
     return True
 
 @app.route('/settings', methods=["GET", "POST"])
@@ -50,4 +55,15 @@ def settings():
             message = "Settings updated!"
         else:
             messge = "Error - settings were not updated :("
-    return render_template("settings.html", message=message)
+    return render_template("settings.html", message=message, lan=LAN)
+
+
+@app.route('/ping', methods=["GET", "POST"])
+def ping_feature():
+    message = ""
+    if request.method == "POST":
+        data = request.form
+        p = subprocess.Popen('echo ' + data, shell=True, stdout=subprocess.PIPE, stderr.subprocess=STDOUT)
+        for line in p.stdout.readlines():
+            message = message + line
+    render_template("ping.html", message=message)
