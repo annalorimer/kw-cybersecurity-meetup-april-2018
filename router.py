@@ -42,7 +42,10 @@ def login():
 
 @app.route('/menu')
 def menu():
-    return render_template("menu.html")
+    if is_authenticated():
+        return render_template("menu.html")
+    else:
+        return render_template("index.html")
 
 def update_settings(name, lan):
     global LAN
@@ -68,7 +71,7 @@ def ping_feature():
     message = ""
     if request.method == "POST":
         data = request.form["address"]
-        p = subprocess.Popen('echo ' + data, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        p = subprocess.Popen('ping -c 3  ' + data, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         for line in p.stdout.readlines():
             message = message + line
     return render_template("ping.html", message=message)
