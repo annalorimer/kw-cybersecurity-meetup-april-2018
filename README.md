@@ -5,4 +5,8 @@
 
 [Security Resources](https://github.com/annalorimer/security-resources)
 - Look under the wiki tab
-
+- Directly relevant to this talk:
+  - https://github.com/annalorimer/security-resources/wiki/Reverse-Engineering
+  - https://github.com/annalorimer/security-resources/wiki/CTFs
+  - https://github.com/annalorimer/security-resources/wiki/Tools
+  - https://github.com/annalorimer/security-resources/wiki/Web-Security
