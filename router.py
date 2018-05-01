@@ -3,6 +3,8 @@ import subprocess
 
 app = Flask(__name__)
 
+# FOR THE LOVE OF ALL THAT IS HOLY DON'T RUN THIS ON SOMETHING YOU CARE ABOUT
+
 # Debug stuff
 
 def debug(msg):
@@ -10,7 +12,7 @@ def debug(msg):
 
 # Global vars
 AUTHENTICATED = False
-LAN = "255.255.255"
+LAN = "255.255.255.255"
 
 def is_authenticated():
     return AUTHENTICATED
